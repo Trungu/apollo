@@ -610,3 +610,63 @@ body {
   align-items: center;
   gap: 6px;
 }
+
+/*Apollo image changes*/
+.apollo-img {
+  position: absolute;
+  bottom: 15px;
+  right: 16px;
+  width: 10vw;
+  max-width: 150px;
+  height: 10vw;
+  background-image: url('neutral_apollo_sprite.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.5s ease; /* smooth transitions for movement, opacity, etc. */
+}
+
+/* Animation class: change image, fade in/out, or move */
+.animate {
+  animation: swapImage 1.2s forwards; 
+}
+
+@keyframes swapImage {
+  0% {
+    background-image: url('neutral_apollo_sprite.png');
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    background-image: url('happy_apollo_sprite.png');
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    background-image: url('neutral_apollo_sprite.png');
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animatesad {
+  animation: sadAnimation 1.6s forwards; 
+}
+
+@keyframes sadAnimation {
+  0% {
+    background-image: url('neutral_apollo_sprite.png');
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    background-image: url('sad_apollo_sprite.png');
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    background-image: url('neutral_apollo_sprite.png');
+    opacity: 1;
+    transform: scale(1);
+  }
+}

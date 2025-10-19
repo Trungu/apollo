@@ -213,3 +213,39 @@ loginbtn.addEventListener("click", () => {
     mainContainer.style.visibility = "visible";
   }, 800);
 });
+
+function triggerAnimation() {
+  const img = document.querySelector('.apollo-img');
+
+  // Add the animation class
+  img.classList.add('animate');
+
+  // Remove the class after animation ends so it can be triggered again
+  img.addEventListener('animationend', () => {
+    img.classList.remove('animate');
+  }, { once: true });
+}
+
+function triggerSadAnimation() {
+  const img = document.querySelector('.apollo-img');
+
+  // Add the animation class
+  img.classList.add('animatesad');
+
+  // Remove the class after animation ends so it can be triggered again
+  img.addEventListener('animationend', () => {
+    img.classList.remove('animatesad');
+  }, { once: true });
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === "a" || event.key === "A") { // lowercase or uppercase 'A'
+    triggerSadAnimation();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === "k" || event.key === "K") { // lowercase or uppercase 'A'
+    triggerAnimation();
+  }
+});
