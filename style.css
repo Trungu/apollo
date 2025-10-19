@@ -1,0 +1,405 @@
+/* css boilerplate that standarizes margins and other stuff */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* standarize font size so rem can be used as in 1 rem  = 10 px */
+html {
+  font-size: 62.5%;
+}
+
+/* center main-container vertically by setting center on body */
+/* make the background a gradient from bottom right to top left using the primary color as the darker color */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom right,
+    white,
+    var(--color-primary),
+    var(--color-primary-2)
+  );
+  font-family: "Roboto";
+}
+
+/* generate custom css properties for color for ex #e6ccb2 */
+:root {
+  --color-primary: #f1ceda;
+  --color-primary-2: #dcd6cd;
+  --color-secondary: #500000ff;
+  --color-dark-1: #805b3b;
+}
+
+/* Center and style the main-container */
+.main-container {
+  width: 105rem;
+  height: 65rem;
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 3rem;
+  /* border: 2px solid rgba(0, 0, 0, 0.523); */
+  /* box-shadow: 0 4px 8px rgba(128, 128, 128, 0.2); */
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  /* overflow: hidden; */
+}
+
+.feed-container {
+  flex: 3;
+  /* border-right: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.top-bar {
+  width: 100%;
+  height: 7rem; /* Fixed height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Prevent the top bar from shrinking */
+  box-sizing: border-box; /* Ensure padding and borders are included in the height */
+}
+
+.feed-content-container {
+  display: flex; /* Arrange children side by side */
+  flex-direction: row; /* Horizontal layout */
+  justify-content: space-between; /* Add space between the boxes */
+  align-items: stretch; /* Stretch boxes to the same height */
+  flex-grow: 1; /* Allow it to grow and fill the remaining space */
+}
+
+.sidebar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stack-main-feed,
+.stack-saved-feed {
+  flex: 1; /* Make both boxes take up equal space */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 2rem; /* Add padding for spacing */
+  border-radius: 1rem; /* Optional: Add rounded corners */
+}
+
+.card-stack {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  perspective: 1000px;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 2.4rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  background: #e6d6d4;
+  transform: translateY(calc(var(--i) * -20px)) scale(calc(1 - var(--i) * 0.03))
+    rotate(var(--tilt, 0deg));
+  z-index: calc(3 - var(--i));
+  transition: transform 0.9s cubic-bezier(0.25, 1.25, 0.5, 1), opacity 0.8s ease,
+    box-shadow 0.4s ease;
+  overflow-y: hidden;
+}
+
+.card.front:hover {
+  transform: translateY(calc(var(--i) * -20px)) scale(1.01)
+    rotate(var(--tilt, 0deg));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.card-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  background-color: #ecd8d5; /* slight background to separate it */
+  /* border-bottom: 1px solid #ddd; */
+  z-index: 2;
+}
+
+.card-image {
+  position: relative; /* parent for absolute caption */
+  width: 100%;
+  height: calc(100% + 6rem); /* leave space for top bar */
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0;
+  margin-top: 0; /* remove the previous 16rem */
+}
+
+.card-image::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgb(0, 0, 0), transparent);
+  z-index: 2;
+}
+
+.card-caption {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  color: #fff;
+  z-index: 3;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.4rem;
+}
+
+.caption-text {
+  font-size: 1.6rem;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+}
+
+.username {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card.front {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card.going {
+  transform: translateY(-160%) scale(0.9);
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+#swipe {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    to bottom right,
+    rgb(87, 5, 5),
+    rgb(34, 0, 0)
+  ); /* lighter top-left to darker bottom-right */
+  color: var(--color-primary);
+  border: none;
+  border-radius: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+#swipe:hover {
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+#swipe:active {
+  transform: scale(0.95); /* Slightly shrink the button when clicked */
+}
+
+#swipe-container {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Ensure it takes up the full width of the parent */
+  height: auto; /* Allow it to adjust to content height */
+  margin-top: 3rem;
+}
+
+.swipe-btn {
+  display: inline-block;
+  width: 12rem;
+  margin: 0 1rem; /* adds equal space between buttons */
+  padding: 1rem 2rem;
+  background: linear-gradient(to bottom right, rgb(87, 5, 5), rgb(34, 0, 0));
+  color: var(--color-primary);
+  border: none;
+  border-radius: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.post-btn {
+  display: inline-block;
+  width: 12rem;
+  margin: 0 1rem; /* adds equal space between buttons */
+  padding: 1rem 2rem;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  background: black;
+}
+
+.swipe-btn:hover {
+  transform: scale(1.05);
+}
+
+.swipe-btn:active {
+  transform: scale(0.95);
+}
+
+#swipe-container {
+  display: flex;
+  justify-content: center; /* centers both buttons together */
+  align-items: center;
+  gap: 2rem; /* consistent gap between them */
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+}
+
+.card-caption {
+  position: absolute; /* sits on top of image */
+  bottom: 1rem; /* distance from bottom */
+  left: 1.5rem;
+  right: 1.5rem;
+  color: #fff; /* white text for contrast */
+  z-index: 3; /* above gradient */
+  font-size: 1.3rem;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* improves readability */
+}
+/* style in such a way that it will avoid being pushed down by the image */
+.caption-text {
+  margin: 0; /* reset default p margins */
+}
+
+.nav-container {
+  display: flex;
+  font-size: 1.2rem;
+  flex-direction: column;
+}
+
+.feed-title {
+  width: 100%;
+  text-align: center; /* center title */
+  padding-bottom: 6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  font-family: "Merriweather";
+}
+
+.posted-date {
+  font-size: 1.4rem;
+  color: #b8b8b8;
+  margin-top: 0.4rem;
+}
+
+/* Story bar container */
+.story-bar {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+  padding-right: 3rem; /* extra space so last story can scroll fully */
+  overflow-x: auto; /* allow scrolling */
+  scroll-behavior: smooth;
+}
+
+.story-bar::-webkit-scrollbar {
+  display: none; /* hides scrollbar on Chrome/Safari */
+}
+
+/* Each story item */
+.story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto; /* prevent shrinking */
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--color-secondary);
+}
+
+/* Story profile picture circle */
+.story img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-2);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.story-bar-wrapper {
+  width: calc(5 * 6rem + 3rem); /* 4 full stories + half of 5th story */
+  overflow-x: hidden; /* hide overflow beyond wrapper */
+  position: relative;
+}
+
+/* Hover effect */
+.story img:hover {
+  transform: scale(1.08);
+}
+
+.add-story .add-circle {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.2s ease;
+}

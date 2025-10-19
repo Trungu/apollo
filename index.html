@@ -5,10 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apollo</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="main-container">
-      <h1 class="title">Title Lol</h1>
+      <div class="feed-container">
+        <div class="top-bar">
+          <div class="story-bar-wrapper">
+            <div class="story-bar">
+              <div class="story add-story">
+                <div class="add-circle">+</div>
+                <span>Add</span>
+              </div>
+
+              <div class="story">
+                <img src="/assets/images/placeholderpfp.png" alt="User 1" />
+                <span>Branden</span>
+              </div>
+              <div class="story">
+                <img src="/assets/images/placeholderpfp3.png" alt="User 2" />
+                <span>Michael</span>
+              </div>
+              <div class="story">
+                <img src="/assets/images/placeholderpfp4.png" alt="User 3" />
+                <span>Alexander</span>
+              </div>
+              <div class="story">
+                <img src="/assets/images/placeholderpfp5.png" alt="User 4" />
+                <span>Anna</span>
+              </div>
+              <div class="story">
+                <img src="/assets/images/placeholderpfp5.png" alt="User 4" />
+                <span>Sophia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="feed-content-container">
+          <div class="stack-main-feed">
+            <div class="feed-title">
+              <h1>Connect with Others!</h1>
+            </div>
+            <div class="card-stack"></div>
+
+            <div id="swipe-container">
+              <button class="swipe-btn">Swipe Up</button>
+              <button class="post-btn">+ Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
